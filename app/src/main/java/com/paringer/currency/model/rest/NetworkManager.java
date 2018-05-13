@@ -81,6 +81,7 @@ public class NetworkManager {
             if(BuildConfig.DEBUG) Log.e("COIN ",  "Exception",exception);
         }
     }
+    
     public NetworkManager(Context context) {
 
         mContext = context;
