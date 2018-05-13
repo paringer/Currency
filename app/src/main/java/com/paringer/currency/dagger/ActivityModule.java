@@ -2,9 +2,11 @@ package com.paringer.currency.dagger;
 
 import android.app.Activity;
 
+import com.paringer.currency.model.rest.NetworkManager;
 import com.paringer.currency.view.activities.CurrencyListActivity;
 import com.paringer.currency.view.fragments.CoinNamesRecyclerFragment;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import dagger.Binds;
@@ -37,5 +39,11 @@ public abstract class ActivityModule {
     @Singleton
     public static CurrencyListActivity provideCurrencyListActivity(){
         return new CurrencyListActivity();
+    }
+
+    @Provides
+    @Singleton
+    public static NetworkManager provideNetworkManager(CurrencyListActivity context){
+        return new NetworkManager(context);
     }
 }
