@@ -3,6 +3,8 @@ package com.paringer.currency.model.rest.response;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Created by Zhenya on 13.04.2018.
  */
@@ -24,6 +26,19 @@ public class Coin implements Parcelable{
     public Integer SortOrder;
     public String Sponsored;
     public Boolean IsTrading;
+    public String ContentCreatedOn;
+    public String BuiltOn;
+    public String SmartContractAddress;
+    public Integer DecimalPlaces;
+    @JsonIgnore
+    public String Taxonomy;
+    @JsonIgnore
+    public String Rating;
+    public Float TotalCoinsMined;
+    public Integer BlockNumber;
+    public Double NetHashesPerSecond;
+    public Double BlockReward;
+    public Integer BlockTime;
 
     public Coin() {}
 
@@ -56,6 +71,15 @@ public class Coin implements Parcelable{
         Sponsored = in.readString();
         byte tmpIsTrading = in.readByte();
         IsTrading = tmpIsTrading == 0 ? null : tmpIsTrading == 1;
+        ContentCreatedOn = in.readString();
+        BuiltOn = in.readString();
+        SmartContractAddress = in.readString();
+        DecimalPlaces = in.readInt();
+        TotalCoinsMined = in.readFloat();
+        BlockNumber = in.readInt();
+        NetHashesPerSecond = in.readDouble();
+        BlockReward = in.readDouble();
+        BlockTime = in.readInt();
     }
 
     @Override
@@ -86,6 +110,15 @@ public class Coin implements Parcelable{
         }
         dest.writeString(Sponsored);
         dest.writeByte((byte) (IsTrading == null ? 0 : IsTrading ? 1 : 2));
+        dest.writeString(ContentCreatedOn);
+        dest.writeString(BuiltOn);
+        dest.writeString(SmartContractAddress);
+        dest.writeInt(DecimalPlaces);
+        dest.writeFloat(TotalCoinsMined);
+        dest.writeInt(BlockNumber);
+        dest.writeDouble(NetHashesPerSecond);
+        dest.writeDouble(BlockReward);
+        dest.writeInt(BlockTime);
     }
 
     @Override

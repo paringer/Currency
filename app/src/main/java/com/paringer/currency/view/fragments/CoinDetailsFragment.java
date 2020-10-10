@@ -169,7 +169,7 @@ public class CoinDetailsFragment extends MvpFragment implements Refreshable, Swi
         }else{
             swipeRefreshLayout.setRefreshing(false);
             swipeRefreshLayout.invalidate();
-            this.getView().requestLayout();
+            if(getView() != null) getView().requestLayout();
         }
     }
 

@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import com.hannesdorfmann.mosby.mvp.MvpFragment;
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.paringer.currency.R;
+import com.paringer.currency.model.rest.NetworkManager;
 import com.paringer.currency.model.rest.response.Coin;
 import com.paringer.currency.presenter.CoinNamesPresenter;
 import com.paringer.currency.view.adapters.MyCoinNamesViewAdapter;
@@ -112,7 +113,7 @@ public class CoinNamesRecyclerFragment extends MvpFragment implements Refreshabl
         CoinNamesPresenter presenter = (CoinNamesPresenter) getPresenter();
         presenter.refreshCurrencyList();
         Collection<Coin> coins = CoinListContent.parseCachedList(getContext());
-        List<Coin> items = presenter.prepareCoinList(coins);
+        List<Coin> items = NetworkManager.prepareCoinList(coins);
         MyCoinNamesViewAdapter adapter = new MyCoinNamesViewAdapter(items, mListener);
         list.setAdapter(adapter);
     }

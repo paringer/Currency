@@ -33,5 +33,14 @@ public class CoinListResponse extends BaseResponseWithErrors{
     @JsonIgnore
     public String SponosoredNews;
 
+    @Nullable
+    @JsonIgnore
+    public String ContentCreatedOn;
+    @Nullable
+    @JsonIgnore
+    public String RateLimit;
+    @Nullable
+    @JsonIgnore
+    public String HasWarning;
 
 }
